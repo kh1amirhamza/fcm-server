@@ -11,7 +11,14 @@ fcmRouter.post("/", function (req, res) {
 });
 
 fcmRouter.post("/send",(req, res)=>{
-    Send.sendFcmNotification(req, res, req.body.title, req.body.body, req.body.tokens );
+    let tokens = [];
+    tokens.push("none");
+    
+    if(req.body.tokens.length>0){
+        tokens = req.body.tokens;
+        console.log(req.body.tokens.length);
+    }
+    Send.sendFcmNotification(req, res, req.body.title, req.body.body, tokens );
 })
 
 fcmRouter.get("/",(req, res)=>{
