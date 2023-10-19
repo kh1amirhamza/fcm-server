@@ -5,6 +5,7 @@ const Update = require('../fcm/update')
 const Add = require('../fcm/add')
 const Get = require('../fcm/get')
 const Send = require('../fcm/admin_send_notfication')
+const schedule = require('node-schedule');
 
 fcmRouter.post("/", function (req, res) {
    Add.addFCM(req, res);
@@ -47,6 +48,17 @@ fcmRouter.delete("/:id", function (req, res) {
 Delete.deleteUser(id, req, res);
 })
 
+
+const rule = new schedule.RecurrenceRule();
+rule.second = 10;
+
+// const job = schedule.scheduleJob(rule, function(){
+//   console.log('The answer to life, the universe, and everything!');
+// });
+
+const job = schedule.scheduleJob('*/1 * * * *', function(fireDate){
+    console.log('This job was supposed to run at ' + fireDate + ', but actually ran at ' + new Date());
+  });
 
 module.exports = fcmRouter;
 
