@@ -12,6 +12,7 @@ module.exports = {
     });
 
     const query = { "_id": id } ;
+    const data= {'full name': "abc"}
 
     FCM.updateOne(query, {$set: fcm}, (err, result) => {
         if (err) {

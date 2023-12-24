@@ -56,7 +56,7 @@ rule.second = 10;
 //   console.log('The answer to life, the universe, and everything!');
 // });
 
-const job = schedule.scheduleJob('*/1 * * * *', function(fireDate){
+const job = schedule.scheduleJob('*/14 * * * *', function(fireDate){
     console.log('This job was supposed to run at ' + fireDate + ', but actually ran at ' + new Date());
   });
 
