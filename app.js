@@ -38,6 +38,12 @@ app.use((req, res, next) => {
 
 app.use("/fcm", fcm);
 
+app.get("/active", function (req, res) {
+    console.log("Server is now online!");
+          res.json({"message": "Server is now online!"})
+          res.end();
+ });
+
 
 //For Cpanel...
 //app.listen(5000);

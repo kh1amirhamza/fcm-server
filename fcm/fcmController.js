@@ -11,10 +11,7 @@ fcmRouter.post("/", function (req, res) {
    Add.addFCM(req, res);
 });
 
-fcmRouter.get("/active", function (req, res) {
-          res.json({"message": "Server is now online!"})
-          res.end();
- });
+
 
 fcmRouter.post("/send",(req, res)=>{
     let tokens = [];
@@ -27,10 +24,10 @@ fcmRouter.post("/send",(req, res)=>{
     Send.sendFcmNotification(req, res, req.body.title, req.body.body, tokens );
 })
 
-fcmRouter.get("/",(req, res)=>{
-          res.json({"message": "Server is now Online!"})
-          res.end();
-})
+// fcmRouter.get("/",(req, res)=>{
+//           res.json({"message": "Server is now Online!"})
+//           res.end();
+// })
 
 //update
 fcmRouter.patch("/:id", function (req, res) {
