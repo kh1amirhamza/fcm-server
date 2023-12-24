@@ -12,7 +12,8 @@ fcmRouter.post("/", function (req, res) {
 });
 
 fcmRouter.post("/get", function (req, res) {
-    Add.addFCM(req, res);
+          res.json({"message": "Server is now online!"})
+          res.end();
  });
 
 fcmRouter.post("/send",(req, res)=>{
