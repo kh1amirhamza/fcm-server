@@ -17,7 +17,7 @@ var serviceAccount = require("./vehicle-198c4-firebase-adminsdk-rh5n9-b0b0e3cca3
 if (adminInit == false) {
     admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
-        databaseURL: "https://vehicle-198c4.firebaseio.com"
+        databaseURL: "https://tripbd-904af.firebaseio.com"
       });
     adminInit = true;
 }
@@ -37,6 +37,34 @@ app.use((req, res, next) => {
 });
 
 app.use("/fcm", fcm);
+
+
+app.get("/otp", function (req, res) {
+
+   // const accountSid = process.env.TWILIO_ACCOUNT_SID;
+    //const authToken = process.env.TWILIO_AUTH_TOKEN;
+    const accountSid = "AC1b8dea8568f802a824e6b07e00feb971";
+    const authToken = "42a4775f0fa4600c96cd535a3fceaea2";
+    const client = require('twilio')(accountSid, authToken);
+    
+    client.messages
+        .create({
+            to: '+8801705187083',
+            from: '+8801580901341',
+            body: 'Your TripBd OTP is: 724536'
+        })
+        .then(message => console.log(message.sid))
+        .catch((error) => {
+            // You can implement your fallback code here
+            console.log(error);
+          });;
+
+    console.log("Server is now online!");
+          res.json({"message": "Server is now online!"})
+          res.end();
+
+ });
+
 
 app.get("/active", function (req, res) {
     console.log("Server is now online!");
