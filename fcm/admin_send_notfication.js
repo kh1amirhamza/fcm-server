@@ -39,12 +39,13 @@ function sendFcmNotiication(req, res, title, body, tokens){
     //   notification:{ 
     //     "body": "My notification!"
     // },
-    notification : {
-       // "click_action" : ".MainActivity", 
-       title : title,
-       body: body
+    // notification : {
+    //    // "click_action" : ".MainActivity", 
+    //    title : title,
+    //    body: body
         
-    }, 
+    // }, 
+    
     tokens: tokens,
   };
   
